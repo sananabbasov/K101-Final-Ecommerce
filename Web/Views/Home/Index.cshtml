@@ -64,22 +64,6 @@
                     </div>
                 </form>*@
             </div>
-            <!-- <div class="my-auto">
-                <div class="container">
-                    <div class="row">
-                        <div class="perspectiv">
-                            <div class="book3D">
-                                <div class="cover">
-                                    <figure class="front"></figure>
-                                    <figure class="back"></figure>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis nesciunt
-                                    doloribus accusamus ex, repudiandae ratione quam!</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </div>
     </div>
@@ -134,12 +118,7 @@
             <div class="my-3 d-flex justify-content-between">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
-                        @for (int i = 1; i <= (Model.Products.Count); i++)
-                        {
-                            <li class="page-item @(Model.PageNo==i?"active":"") aria-current="page">
-                                <a class="page-link" href="?pageno=@i">@i</a>
-                            </li>
-                        }
+                      
 
                     </ul>
                 </nav>

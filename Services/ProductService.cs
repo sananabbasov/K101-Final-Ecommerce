@@ -20,7 +20,7 @@ namespace Services
             var products = _context.Products.AsQueryable();
             products = products.OrderByDescending(x => x.ID);
 
-            return products.Skip((pageNo - 1) * 10).Take(10).ToList();
+            return products.Skip((pageNo - 1) * 3).Take(10).ToList();
         }
         public Product GetProductByID(int id)
         {
