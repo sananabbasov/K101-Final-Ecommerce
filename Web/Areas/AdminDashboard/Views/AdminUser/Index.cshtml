@@ -1,0 +1,46 @@
+﻿@model IEnumerable<K101User>
+@inject Microsoft.AspNetCore.Identity.UserManager<K101User> userManager
+@{
+    int sira = 1;
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panAel">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Email</th>
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                <tr>
+                    <td>@sira</td>
+                    <td>@user.Email</td>
+                    <td>@user.UserName</td>
+                    <td>
+                        @{
+                            var roles = await userManager.GetRolesAsync(user);
+                            string userRole = "";
+                            foreach (var role in roles)
+                            {
+                                userRole += role + " ";
+                            }
+                        }
+                        @userRole
+                    </td>
+                    <td>
+                        <a asp-action="addrole" asp-route-id="@user.Id">Add role</a>
+                    </td>
+                </tr>
+                    sira++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

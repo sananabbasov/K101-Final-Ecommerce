@@ -1,0 +1,470 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.card {
+  border: 1px solid #718093;
+}
+
+.card a {
+  text-decoration: none;
+}
+
+.book3D {
+  width: 250px;
+  height: 350px;
+  background-color: #fff;
+  position: relative;
+  -webkit-transform: rotateY(-15deg);
+          transform: rotateY(-15deg);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+  -webkit-box-shadow: 6px 9px 19px 0px #565151;
+          box-shadow: 6px 9px 19px 0px #565151;
+  border-left: 1px solid #000;
+}
+
+.book3D::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  z-index: 1;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  -webkit-transition: .20s ease-in;
+  transition: .20s ease-in;
+  -webkit-transform: rotateY(-10deg);
+          transform: rotateY(-10deg);
+  border-left: 1px solid #000;
+  -webkit-box-shadow: 6px 9px 19px 0px #565151;
+          box-shadow: 6px 9px 19px 0px #565151;
+}
+
+.book3D::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  z-index: 1;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  -webkit-transition: .30s ease-in;
+  transition: .30s ease-in;
+  -webkit-transform: rotateY(0deg);
+          transform: rotateY(0deg);
+  border-left: 1px solid #000;
+  -webkit-box-shadow: 6px 9px 19px 0px #565151;
+          box-shadow: 6px 9px 19px 0px #565151;
+}
+
+.cover {
+  z-index: 2;
+  width: 250px;
+  height: 100%;
+  position: absolute;
+  background: url(../img/1.jpeg);
+  background-size: cover;
+  -webkit-transform: rotateY(-10deg);
+          transform: rotateY(-10deg);
+  left: 0;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  -webkit-transition: all .40s ease-in;
+  transition: all .40s ease-in;
+}
+
+figure {
+  margin: 0;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+figure .front {
+  background: red;
+}
+
+figure .back {
+  background: green;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.bg-bookstore {
+  background-color: #718093;
+}
+
+#header {
+  background: url("../img/headerB.jpg");
+  height: 50vh;
+  width: 100%;
+  background-size: cover;
+  border-bottom: 1px solid #e1b12c;
+  -webkit-box-shadow: 10px 10px 10px 2px #dedede;
+          box-shadow: 10px 10px 10px 2px #dedede;
+}
+
+#header .headerTextArea {
+  height: 50vh;
+  background: #718093c9;
+  color: #fff;
+}
+
+#header input.form-control {
+  height: 60px;
+  width: 85%;
+}
+
+#header input.btn {
+  width: 15%;
+  background: #e1b12c;
+  color: #fff;
+}
+
+.modal-dialog {
+  max-width: 60%;
+  margin: 1.75rem auto;
+}
+
+.bookSection {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+}
+
+.bookSection .book3Dfull {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  -webkit-box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.2);
+          box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.2);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.bookSection .book3Dfull:hover {
+  -webkit-transform: rotateY(35deg);
+          transform: rotateY(35deg);
+}
+
+.bookSection .book3Dfull .active {
+  content: '';
+  left: 0;
+  position: absolute;
+  width: 10%;
+  height: 100%;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  background: url("../img/1.1.jpeg");
+  background-position: center;
+  -webkit-transform: rotateY(90deg);
+          transform: rotateY(90deg);
+}
+
+.bookSection .book3Dfull::before {
+  content: '';
+  left: 0;
+  position: absolute;
+  width: 10%;
+  height: 100%;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  background: url("~/img/1.1.jpeg");
+  background-position: center;
+  -webkit-transform: rotateY(90deg);
+          transform: rotateY(90deg);
+}
+
+.bookSection .book3Dfull img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+/* Book Feed */
+.Sectionsbook {
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+  padding: 10px;
+  position: relative;
+}
+
+.Sectionsbook .page {
+  width: 89%;
+  height: 92%;
+  background: #fff;
+  position: absolute;
+  padding: 15px;
+  font-size: 8px;
+  top: 13px;
+  left: 10px;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  -webkit-transform: rotateY(0deg);
+          transform: rotateY(0deg);
+  z-index: -1;
+  opacity: 0;
+}
+
+.Sectionsbook .asdfg {
+  -webkit-box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.2);
+          box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.2);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  -webkit-transform: rotateY(35deg);
+          transform: rotateY(35deg);
+}
+
+.Sectionsbook .asdfg img {
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.Sectionsbook .asdfg::before {
+  content: '';
+  left: 0;
+  position: absolute;
+  width: 25px;
+  height: 100%;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  background: url("../img/1.1.jpeg");
+  background-position: center;
+  -webkit-transform: rotateY(90deg);
+          transform: rotateY(90deg);
+}
+
+.Sectionsbook .asdfg::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  background: url("../img/back.jpeg");
+  background-size: cover;
+  background-position: center;
+  -webkit-transform: rotateY(180deg) translateZ(26px);
+          transform: rotateY(180deg) translateZ(26px);
+}
+
+.bookSections {
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+  padding: 10px;
+  position: relative;
+}
+
+.bookSections .page {
+  width: 89%;
+  height: 92%;
+  background: #fff;
+  position: absolute;
+  padding: 15px;
+  font-size: 8px;
+  top: 13px;
+  left: 10px;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  -webkit-transform: rotateY(0deg);
+          transform: rotateY(0deg);
+  z-index: -1;
+  opacity: 0;
+}
+
+.bookSections .asdfg {
+  -webkit-box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.2);
+          box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.2);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  -webkit-transform: rotateY(35deg);
+          transform: rotateY(35deg);
+}
+
+.bookSections .asdfg img {
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.bookSections .asdfg::before {
+  content: '';
+  left: 0;
+  position: absolute;
+  width: 25px;
+  height: 100%;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  background: url("../img/1.1.jpeg");
+  background-position: center;
+  -webkit-transform: rotateY(90deg);
+          transform: rotateY(90deg);
+}
+
+.bookSections .asdfg::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  background: url("../img/back.jpeg");
+  background-size: cover;
+  background-position: center;
+  -webkit-transform: rotateY(180deg) translateZ(26px);
+          transform: rotateY(180deg) translateZ(26px);
+}
+
+.btn.btn-mainColor {
+  border-color: #718093;
+  background: none;
+}
+
+.flipCart {
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-perspective: 1200px;
+          perspective: 1200px;
+  -webkit-transform: rotateY(40deg);
+          transform: rotateY(40deg);
+  position: relative;
+}
+
+.flipCart .page1 {
+  -webkit-perspective: 1200px;
+          perspective: 1200px;
+  width: 300px;
+  height: 300px;
+  background: red;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
+.flipCart .page2 {
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+  width: 300px;
+  height: 300px;
+  background: url(../img/2.jpeg);
+  background-size: cover;
+  top: 0;
+  left: 0;
+  position: absolute;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.flipCart:hover .page2 {
+  -webkit-transform: rotateY(-180deg);
+          transform: rotateY(-180deg);
+}
+
+.price .badge {
+  color: #718093;
+}
+
+.price .badge.bg-price {
+  border: 1px solid #718093;
+}
+
+#header {
+  overflow: hidden;
+}
+
+#header .aniFlex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  margin-left: -50%;
+}
+
+#header .aniFlex .aniIcons {
+  color: #718093;
+  -webkit-animation: ani1 10s linear infinite;
+          animation: ani1 10s linear infinite;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+  position: relative;
+}
+
+#bookMore .card {
+  border: 0px solid #fff;
+}
+
+/* @media */
+@media only screen and (max-width: 600px) {
+  .modal-dialog {
+    max-width: 90%;
+    margin: 1.75rem auto;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .modal-dialog {
+    max-width: 90%;
+    margin: 1.75rem auto;
+  }
+}
+/*# sourceMappingURL=main.css.map */
+
+
+.card-img, .card-img-bottom, .card-img-top {
+    width: 100%;
+    height: 345px;
+}

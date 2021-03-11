@@ -1,0 +1,16 @@
+﻿@model AddRoleUserVM
+@{
+}
+
+<form method="post">
+    <div class="form-group">
+        <label>Vezife</label>
+        <select class="form-control" name="Role">
+            @foreach (var role in Model.Roles)
+            {
+                <option value="@role">@role</option>
+            }
+        </select>
+    </div>
+    <input type="submit"  value="Teyin et" class="btn btn-outline-danger"/>
+</form>

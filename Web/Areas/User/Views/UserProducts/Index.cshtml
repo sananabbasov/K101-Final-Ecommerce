@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Entities.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<section id="bookSection" class="mt-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-6 my-2">
+                <img class="img-fluid" src="~/img/ads/ads_3.PNG" alt="">
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-6 my-2">
+                <img class="img-fluid" src="~/img/ads/ads_4.PNG" alt="">
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-6 my-2">
+                <img class="img-fluid" src="~/img/ads/ads_5.PNG" alt="">
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-6 my-2">
+                <img class="img-fluid" src="~/img/ads/ads_6.PNG" alt="">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-10 col-md-12 col-sm-12 col-12">
+                <div class="row">
+                    <p>
+                        <a asp-action="Create"><i class="bi bi-plus-circle-dotted"></i> Əlavə Et</a>
+                    </p>
+ 
+
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Category)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ProductName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Publishing)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Author)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Price)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ 
+                                    string yoxla = @ViewBag.userId;
+                                }
+                                @foreach (var item in Model.Where(x=> x.Seller == yoxla))
+                                {
+                                  
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Category.ID)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ProductName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Publishing)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Author)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Price)
+                                        </td>
+                                        <td>
+                                            <a asp-action="Delete" asp-route-id="@item.ID"><i class="bi bi-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-12 col-sm-12 col-12 mt-3">
+                <img class="img-fluid" src="~/img/ads/ads_1.PNG" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+

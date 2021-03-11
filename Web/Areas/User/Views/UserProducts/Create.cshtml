@@ -1,0 +1,150 @@
+﻿@model Entities.Product
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Product</h4>
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            @User.Identity.Name
+        </div>
+        <div class="col-md-8">
+            <form method="post" id="actionForm" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Supplier" class="control-label"></label>
+                    <input asp-for="Supplier" value="@User.Identity.Name" class="form-control" />
+                    <span asp-validation-for="Supplier" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CategoryID" class="control-label"></label>
+                    <select asp-for="CategoryID" class="form-control" asp-items="ViewBag.CategoryID"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ProductName" class="control-label"></label>
+                    <input asp-for="ProductName" class="form-control" />
+                    <span asp-validation-for="ProductName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Seller" value="@ViewBag.userId" class="form-control" hidden />
+                    <span asp-validation-for="Seller" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Number" class="control-label"></label>
+                    <input asp-for="Number" class="form-control" />
+                    <span asp-validation-for="Number" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Publishing" class="control-label"></label>
+                    <input asp-for="Publishing" class="form-control" />
+                    <span asp-validation-for="Publishing" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Author" class="control-label"></label>
+                    <input asp-for="Author" class="form-control" />
+                    <span asp-validation-for="Author" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Pages" class="control-label"></label>
+                    <input asp-for="Pages" class="form-control" />
+                    <span asp-validation-for="Pages" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"></label>
+                    <input id="productPicture" type="file" name="ThumbnailPicture" multiple class="form-control" />
+                    <span asp-validation-for="ProductPictures" class="text-danger"></span>
+                    <div id="picturesArea" class="row pb-2"></div>
+                    <div id="imageTemplate" style="display:none">
+                        <div class="thisImage col-md-3">
+                            <div class="card mt-4">
+                                <div class="">
+                                    <img style="height:250px;object-fit:contain" class='image img-thumbnail' src='' />
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <input type="radio" name="Tags" class="mr-1" value='' checked>
+
+                                        <label class="imageInputLabel">Thumnail Image</label>
+                                    </li>
+                                </ul>
+                                <div class="card-footer">
+                                    <button type="button" class="btn btn-danger" onclick="removeImage(this)"><i class="fas fa-times mr-1"></i> Remove Image</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="ProductPictures" id="pictureIDs" />
+
+                </div>
+                <div class="form-group my-3">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+@section userScripts{
+    <script>
+    $("#productPicture").change(function () {
+        var pictures = this.files;
+        var picsData = new FormData();
+        for (var i = 0; i < pictures.length; i++) {
+            picsData.append("Pictures", pictures[i]);
+        }
+        $.ajax({
+            url: "@Url.Action("UploadPicture", "PictureHelper")",
+            method: "POST",
+            data: picsData,
+            dataType: "JSON",
+            processData: false,
+            contentType: false
+        })
+            .done(function (res) {
+                for (var i = 0; i < res.data.length; i++) {
+                    var picResponse = res.data[i];
+                    AttachNewImage(picResponse.pictureURL, picResponse.id)
+                }
+            })
+    })
+    function AttachNewImage(imageUrl, imageID) {
+        var $newimgHTML = $("#imageTemplate").clone();
+        $newimgHTML.find(".image").attr("src", "/uploads/" + imageUrl);
+        $newimgHTML.find(".image").attr("data-id", imageID);
+        $newimgHTML.find("input[name=Tags]").val(imageUrl);
+        $newimgHTML.find("input[name=Tags]").attr("id", "r" + imageID);
+        $newimgHTML.find(".imageInputLabel").attr("for", "r" + imageID);
+        $("#picturesArea").append($newimgHTML.html());
+
+    }
+    $("#actionForm").on("submit", function () {
+        var imageIDs = [];
+        $("#picturesArea .image").each(function () {
+            var imageID = $(this).attr("data-id");
+            imageIDs.push(imageID);
+        });
+        $("#pictureIDs").val(imageIDs.join());
+    })
+    function removeImage(btn) {
+        $(btn).parents(".thisImage").remove()
+    }
+    </script>
+
+}
