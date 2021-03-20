@@ -4,9 +4,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>Product</h4>
+<script src="https://cdn.ckeditor.com/4.16.0/basic/ckeditor.js"></script>
 <hr />
 <div class="container">
     <div class="row">
@@ -16,55 +14,66 @@
         <div class="col-md-8">
             <form method="post" id="actionForm" enctype="multipart/form-data">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
+                <div class="form-group my-3">
                     <label asp-for="Supplier" class="control-label"></label>
                     <input asp-for="Supplier" value="@User.Identity.Name" class="form-control" />
                     <span asp-validation-for="Supplier" class="text-danger"></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group my-3">
                     <label asp-for="CategoryID" class="control-label"></label>
                     <select asp-for="CategoryID" class="form-control" asp-items="ViewBag.CategoryID"></select>
                 </div>
-                <div class="form-group">
+                <div class="form-group my-3">
                     <label asp-for="ProductName" class="control-label"></label>
                     <input asp-for="ProductName" class="form-control" />
                     <span asp-validation-for="ProductName" class="text-danger"></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group my-3">
                     <label asp-for="Description" class="control-label"></label>
-                    <input asp-for="Description" class="form-control" />
+                    @*<input asp-for="Description" class="form-control" />*@
+                    <textarea class="form-control" asp-for="Description" cols="80" id="editor2" rows="10" data-sample-short></textarea>
                     <span asp-validation-for="Description" class="text-danger"></span>
+                    <script>
+                        CKEDITOR.replace('editor2', {
+                            height: 260,
+                            /* Default CKEditor 4 styles are included as well to avoid copying default styles. */
+                            contentsCss: [
+                                'http://cdn.ckeditor.com/4.16.0/full-all/contents.css',
+                                'https://ckeditor.com/docs/ckeditor4/4.16.0/examples/assets/css/classic.css'
+                            ]
+                        });
+                    </script>
                 </div>
-                <div class="form-group">
+                <div class="form-group my-3">
                     <input asp-for="Seller" value="@ViewBag.userId" class="form-control" hidden />
                     <span asp-validation-for="Seller" class="text-danger"></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group my-3">
                     <label asp-for="Number" class="control-label"></label>
                     <input asp-for="Number" class="form-control" />
                     <span asp-validation-for="Number" class="text-danger"></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group my-3">
                     <label asp-for="Publishing" class="control-label"></label>
                     <input asp-for="Publishing" class="form-control" />
                     <span asp-validation-for="Publishing" class="text-danger"></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group my-3">
                     <label asp-for="Author" class="control-label"></label>
                     <input asp-for="Author" class="form-control" />
                     <span asp-validation-for="Author" class="text-danger"></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group my-3">
                     <label asp-for="Pages" class="control-label"></label>
                     <input asp-for="Pages" class="form-control" />
                     <span asp-validation-for="Pages" class="text-danger"></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group my-3">
                     <label asp-for="Price" class="control-label"></label>
                     <input asp-for="Price" class="form-control" />
                     <span asp-validation-for="Price" class="text-danger"></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group my-3">
                     <label class="control-label"></label>
                     <input id="productPicture" type="file" name="ThumbnailPicture" multiple class="form-control" />
                     <span asp-validation-for="ProductPictures" class="text-danger"></span>

@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Entities.Blog>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="container">
+    <div class="row">
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PostName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PostUrl)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PhotoUrl)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Hit)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PostDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsActive)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ModifiedOn)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PostName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PostUrl)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PhotoUrl)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Hit)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PostDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsActive)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

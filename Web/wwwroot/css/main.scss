@@ -1,0 +1,453 @@
+$mainColor: #718093;
+$yellow: #e1b12c;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    a{
+        text-decoration: none;
+        color: $mainColor;
+    }
+}
+
+.card{
+    border: 1px solid $mainColor;
+    a{
+        text-decoration: none;
+    }
+}
+
+
+.book3D{
+        width: 250px;
+        height: 350px;
+        background-color: #fff;
+        position: relative;
+        transform: rotateY(-15deg);
+        transform-style: preserve-3d;
+        transform-origin: left;
+        perspective: 1000px;
+        box-shadow: 6px 9px 19px 0px #565151;
+        border-left: 1px solid #000;
+
+        &::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            z-index: 1;
+            transform-style: preserve-3d;
+            transform-origin: left;
+            transition: .20s ease-in;
+            transform: rotateY(-10deg);
+            border-left: 1px solid #000;
+        box-shadow: 6px 9px 19px 0px #565151;
+
+        }
+        &::after{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            z-index: 1;
+            transform-style: preserve-3d;
+            transform-origin: left;
+            transition: .30s ease-in;
+            transform: rotateY(0deg);
+            border-left: 1px solid #000;
+            box-shadow: 6px 9px 19px 0px #565151;
+
+
+        }
+    }
+    // .book3D:hover{
+    //     .cover{
+    //         transform: rotateY(-180deg);
+    //         transition: .30s;
+    //         z-index: 0;
+    //     }
+    //     &::before{
+    //         transform: rotateY(-180deg);
+    //         transition: .50s;
+    //         z-index: 1;
+    //     }
+    //     &::after{
+    //         transform: rotateY(-180deg);
+    //         transition: .70s;
+    //     }
+        
+    // }
+    .cover{
+        z-index: 2;
+        width: 250px;
+        height: 100%;
+        position: absolute;
+        background: url(../img/1.jpeg);
+        background-size: cover;
+        transform: rotateY(-10deg);
+        left: 0;
+        transform-style: preserve-3d;
+        transform-origin: left;
+        transition: all .40s ease-in;
+        
+    }
+
+    figure {
+        margin: 0;
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+    }
+    figure{
+        .front{
+            background: red;
+        }
+        .back{
+            background: green;
+            transform: rotateY(180deg);
+        }
+    }
+
+
+
+
+
+
+
+
+.bg-bookstore{
+    background-color: $mainColor;
+}
+
+#header{
+    background: url("../img/headerB.jpg");
+    height: 50vh;
+    width: 100%;
+    background-size: cover;
+    .headerTextArea{
+        height: 50vh;
+        background: #718093c9;
+        color: #fff;
+    }
+    border-bottom: 1px solid $yellow;
+    box-shadow: 10px 10px 10px 2px #dedede;
+
+    input{
+        &.form-control{
+            height: 60px;
+            width: 85%;
+        }
+        &.btn{
+            width: 15%;
+            background: $yellow;
+            color: #fff;
+        }
+    }
+    
+}
+
+
+
+// Modals
+.modal-dialog {
+    max-width: 60%;
+    margin: 1.75rem auto;
+}
+
+// 3D object book
+
+.bookSection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    .book3Dfull{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        box-shadow: 20px 20px 20px rgba(0,0,0,0.2);
+        transform-style: preserve-3d;
+        transition: 0.5s;
+        &:hover{
+            transform: rotateY(35deg);
+        }
+        .active{
+            content: '';
+            left: 0;
+            position: absolute;
+            width: 10%;
+            height: 100%;
+            transform-origin: left;
+            background: url('../img/1.1.jpeg');
+            background-position: center;
+            transform: rotateY(90deg);
+        }
+        &::before{
+            content: '';
+            left: 0;
+            position: absolute;
+            width: 10%;
+            height: 100%;
+            transform-origin: left;
+            background: url('../img/1.1.jpeg');
+            background-position: center;
+            transform: rotateY(90deg);
+        }
+        img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+
+
+/* Book Feed */
+.Sectionsbook{
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    padding: 10px;
+    position: relative;
+   .page{
+        width: 89%;
+        height: 92%;
+        background: #fff;
+        position: absolute;
+        padding: 15px;
+        font-size: 8px;
+        top: 13px;
+        left: 10px;
+        transform-origin: left;
+        transform: rotateY(0deg);
+        z-index: -1;
+        opacity: 0;
+    }
+        
+        .asdfg{
+        box-shadow: 20px 20px 20px rgba(0,0,0,0.2);
+        transform-style: preserve-3d;
+        transition: all 0.5s;
+        transform: rotateY(35deg);
+        img{
+            transform-origin: left;
+           
+        }
+        // &:hover{
+        //     // transform: rotateY(185deg);
+        // }
+        &::before{
+            content: '';
+            left: 0;
+            position: absolute;
+            width: 25px;
+            height: 100%;
+            transform-origin: left;
+            background: url('../img/1.1.jpeg');
+            background-position: center;
+            transform: rotateY(90deg);
+        }
+        &::after{
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            transform-origin: center;
+            background: url('../img/back.jpeg');
+            background-size: cover;
+
+            background-position: center;
+            transform: rotateY(180deg) translateZ(26px);
+        }
+    }
+
+}
+
+
+
+
+.bookSections{
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    padding: 10px;
+    position: relative;
+   .page{
+        width: 89%;
+        height: 92%;
+        background: #fff;
+        position: absolute;
+        padding: 15px;
+        font-size: 8px;
+        top: 13px;
+        left: 10px;
+        transform-origin: left;
+        transform: rotateY(0deg);
+        z-index: -1;
+        opacity: 0;
+    }
+        
+        .asdfg{
+        box-shadow: 20px 20px 20px rgba(0,0,0,0.2);
+        transform-style: preserve-3d;
+        transition: all 0.5s;
+        transform: rotateY(35deg);
+        img{
+            transform-origin: left;
+           
+        }
+        // &:hover{
+        //     // transform: rotateY(185deg);
+        // }
+        &::before{
+            content: '';
+            left: 0;
+            position: absolute;
+            width: 25px;
+            height: 100%;
+            transform-origin: left;
+            background: url('../img/1.1.jpeg');
+            background-position: center;
+            transform: rotateY(90deg);
+        }
+        &::after{
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            transform-origin: center;
+            background: url('../img/back.jpeg');
+            background-size: cover;
+
+            background-position: center;
+            transform: rotateY(180deg) translateZ(26px);
+        }
+    }
+
+}
+
+.btn{
+    &.btn-mainColor{
+        border-color: $mainColor;
+        background: none;
+    }
+}
+
+
+.flipCart{
+    transform-style: preserve-3d;
+
+    perspective: 1200px;
+    transform: rotateY(40deg);
+
+    position: relative;
+    .page1{
+    perspective: 1200px;
+
+        width: 300px;
+        height: 300px;
+        background: red;
+        top: 0;
+        left: 0;
+        position: absolute;
+    }
+    .page2{
+        perspective: 1000px;
+        width: 300px;
+        height: 300px;
+        background: url(../img/2.jpeg);
+        background-size: cover;
+        top: 0;
+        left: 0;
+        position: absolute;
+        transform-origin: left;
+        transform-style: preserve-3d;
+        transition: 1s;
+
+        
+    }
+    &:hover{
+        .page2{
+            transform: rotateY(-180deg);
+        }
+    }
+}
+
+
+.price{
+    .badge{
+        color: $mainColor;
+        &.bg-price{
+            border: 1px solid $mainColor;
+        }
+    }
+}
+
+
+#header{
+    overflow: hidden;
+    .aniFlex{
+        display: flex;
+        justify-content: start;
+        margin-left: -50%;
+        .aniIcons{
+            color: $mainColor;
+            animation: ani1 10s linear infinite;
+            animation-delay: 0s;
+            position: relative;
+        }
+    }
+}
+
+
+#bookMore{
+    .card {
+        border: 0px solid #fff;
+    }
+}
+
+
+
+#blogPost{
+    .card{
+        width: 100%;
+        height: 295px;
+        overflow: hidden;
+        img{
+            height: 200px;
+        }
+    }
+}
+
+
+
+/* @media */
+@media only screen and (max-width: 600px) {
+    // Modals
+    .modal-dialog {
+        max-width: 90%;
+        margin: 1.75rem auto;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    // Modals
+    .modal-dialog {
+        max-width: 90%;
+        margin: 1.75rem auto;
+    }
+}

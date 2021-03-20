@@ -1,0 +1,151 @@
+﻿@model Entities.Product
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/User/Views/_ViewStart.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Category.ID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Seller)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Seller)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Number)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Number)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Publishing)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Publishing)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Author)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Author)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PhotoURL)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PhotoURL)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pages)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pages)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Discount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Discount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cost)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cost)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.isFeatured)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.isFeatured)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ThumbnailPictureID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ThumbnailPictureID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SKU)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SKU)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Tags)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tags)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Barcode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Barcode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Supplier)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Supplier)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Hit)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Hit)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsDeleted)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsDeleted)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedOn)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedOn)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

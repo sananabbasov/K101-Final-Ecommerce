@@ -44,17 +44,11 @@ namespace Web.Controllers
             IdentityResult result = await _userManager.CreateAsync(appUser, registerVM.Password);
 
             
-
-            IdentityRole addRole = new IdentityRole()
-            {
-                Id = appUser.Id,
-                Name = "User"
-            };
-
             
 
             if (result.Succeeded)
             {
+                await _userManager.AddToRoleAsync(appUser, "User");
                 return RedirectToAction(nameof(Login));
             }
             else

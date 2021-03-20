@@ -5,6 +5,11 @@
           box-sizing: border-box;
 }
 
+* a {
+  text-decoration: none;
+  color: #718093;
+}
+
 .card {
   border: 1px solid #718093;
 }
@@ -204,7 +209,7 @@ figure .back {
   height: 100%;
   -webkit-transform-origin: left;
           transform-origin: left;
-  background: url("~/img/1.1.jpeg");
+  background: url("../img/1.1.jpeg");
   background-position: center;
   -webkit-transform: rotateY(90deg);
           transform: rotateY(90deg);
@@ -447,6 +452,16 @@ figure .back {
   border: 0px solid #fff;
 }
 
+#blogPost .card {
+  width: 100%;
+  height: 295px;
+  overflow: hidden;
+}
+
+#blogPost .card img {
+  height: 200px;
+}
+
 /* @media */
 @media only screen and (max-width: 600px) {
   .modal-dialog {
@@ -462,9 +477,3 @@ figure .back {
   }
 }
 /*# sourceMappingURL=main.css.map */
-
-
-.card-img, .card-img-bottom, .card-img-top {
-    width: 100%;
-    height: 345px;
-}

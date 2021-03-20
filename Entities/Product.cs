@@ -27,6 +27,7 @@ namespace Entities
         public string Tags { get; set; }
         public string Barcode { get; set; }
         public string Supplier { get; set; }
+        public int Hit { get; set; }
 
         public virtual List<ProductPicture> ProductPictures { get; set; }
     }

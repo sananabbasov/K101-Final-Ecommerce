@@ -4,9 +4,11 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using DataAccess;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Services;
+using Web.Helper;
 using Web.Models;
 
 namespace Web.Controllers
@@ -17,25 +19,34 @@ namespace Web.Controllers
         private ProductService _productService;
         private AdvertisementService _advertisementService;
         private CategoryService _categoryService;
+        private BlogService _blogService;
         public HomeController(ILogger<HomeController> logger, EcommerceContext context)
         {
             _productService = new ProductService(context);
             _logger = logger;
             _advertisementService = new AdvertisementService(context);
             _categoryService = new CategoryService(context);
+            _blogService = new BlogService(context);
         }
 
-        public IActionResult Index(int? pageNo)
+        public IActionResult Index(int? pageNo, int? recordSize)
         {
-            pageNo = pageNo.HasValue ? pageNo.Value : 1;
+            
+            recordSize = recordSize.HasValue ? recordSize.Value : 10;
+
 
             ShopProductViewModel vm = new ShopProductViewModel()
             {
-                Products = _productService.GetProducts(pageNo.Value),
+                Products = _productService.ListProduct(pageNo, recordSize.Value, out int count),
                 Categories = _categoryService.GetCategories(),
-                Advertisements = _advertisementService.GetAdvertisements()
-            };
+                Advertisements = _advertisementService.GetAdvertisements(),
+                PageSize = recordSize.Value,
+                PageNo = pageNo,
+                Blogs = _blogService.GetAllProducts()
+                
 
+            };
+            vm.Pager = new Pager(count, pageNo, recordSize.Value);
 
             return View(vm);
         }

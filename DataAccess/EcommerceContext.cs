@@ -18,6 +18,8 @@ namespace DataAccess
         public DbSet<Category> Categories { get; set; }
         public DbSet<Advertisement> Advertisementies { get; set; }
         public DbSet<K101User> K101Users { get; set; }
+        public DbSet<HitCounter> HitCounters { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder); // This needs to go before the other rules!

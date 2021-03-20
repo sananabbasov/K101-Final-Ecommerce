@@ -22,12 +22,24 @@ namespace Services
 
             return products.Skip((pageNo - 1) * 3).Take(10).ToList();
         }
+        public List<Product> GetAllProducts()
+        {
+            var products = _context.Products.ToList();
+
+            return products;
+        }
+        public List<Product> GetProductsByView()
+        {
+            var products = _context.Products.OrderByDescending(x=>x.Hit).Take(8).ToList();
+
+            return products;
+        }
         public Product GetProductByID(int id)
         {
             return _context.Products.Find(id);
         }
 
-        public List<Product> SerachProduct(int? id, string search, int? sortBy, int pageNo)
+        public List<Product> SerachProduct(int? id, string search, int? sortBy, int? pageNo, int? recordSize, out int count)
         {
             var products = _context.Products.AsQueryable();
             if (id.HasValue)
@@ -54,9 +66,22 @@ namespace Services
                         break;
                 }
             }
-            
-            return products.Skip((pageNo-1)*3).Take(3).ToList();
+            pageNo = pageNo ?? 1;
+            var skipCount = (pageNo.Value - 1) * recordSize.Value;
+            count = products.Count();
+            return products.Skip(skipCount).Take(recordSize.Value).ToList();
 
         }
+        public List<Product> ListProduct(int? pageNo, int? recordSize, out int count)
+        {
+            var products = _context.Products.AsQueryable();
+            
+            pageNo = pageNo ?? 1;
+            var skipCount = (pageNo.Value - 1) * recordSize.Value;
+            count = products.Count();
+            return products.Skip(skipCount).Take(recordSize.Value).ToList();
+
+        }
+
     }
 }

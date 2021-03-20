@@ -26,6 +26,7 @@
 
     <!-- Custom Theme Style -->
     <link href="~/admin/build/css/custom.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 </head>
 
 <body class="nav-md">
@@ -61,10 +62,10 @@
                                     </a>
                                 </li>
                                 @*<li>
-                                    <a href="#">
-                                        <i class="fa fa-shopping-bag" aria-hidden="true"></i> Məhsullar
-                                    </a>
-                                </li>*@
+                                        <a href="#">
+                                            <i class="fa fa-shopping-bag" aria-hidden="true"></i> Məhsullar
+                                        </a>
+                                    </li>*@
                                 <li>
                                     <a href="/admindashboard/categories">
                                         <i class="fa fa-folder-open-o" aria-hidden="true"></i> Kateqoriyalar
@@ -85,10 +86,10 @@
                                     </ul>
                                 </li>
                                 @*<li>
-                                    <a href="#">
-                                        <i class="fa fa-cogs" aria-hidden="true"></i> Tənzimləmələr
-                                    </a>
-                                </li>*@
+                                        <a href="#">
+                                            <i class="fa fa-cogs" aria-hidden="true"></i> Tənzimləmələr
+                                        </a>
+                                    </li>*@
                             </ul>
                         </div>
 
@@ -121,89 +122,89 @@
                         </div>
 
                         @*<ul class="nav navbar-nav navbar-right">
-                            <li class="">
-                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="images/img.jpg" alt="">John Doe
-                                    <span class=" fa fa-angle-down"></span>
-                                </a>
-                                <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                    <li><a href="javascript:;"> Profile</a></li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            <span class="badge bg-red pull-right">50%</span>
-                                            <span>Settings</span>
-                                        </a>
-                                    </li>
-                                    <li><a href="javascript:;">Help</a></li>
-                                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
-                                </ul>
-                            </li>
-
-                            <li role="presentation" class="dropdown">
-                                <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa fa-envelope-o"></i>
-                                    <span class="badge bg-green">6</span>
-                                </a>
-                                <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                                    <li>
-                                        <a>
-                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                                            <span>
-                                                <span>John Smith</span>
-                                                <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                                                Film festivals used to be do-or-die moments for movie makers. They were where...
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
-                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                                            <span>
-                                                <span>John Smith</span>
-                                                <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                                                Film festivals used to be do-or-die moments for movie makers. They were where...
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
-                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                                            <span>
-                                                <span>John Smith</span>
-                                                <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                                                Film festivals used to be do-or-die moments for movie makers. They were where...
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
-                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                                            <span>
-                                                <span>John Smith</span>
-                                                <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                                                Film festivals used to be do-or-die moments for movie makers. They were where...
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <div class="text-center">
-                                            <a>
-                                                <strong>See All Alerts</strong>
-                                                <i class="fa fa-angle-right"></i>
+                                <li class="">
+                                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        <img src="images/img.jpg" alt="">John Doe
+                                        <span class=" fa fa-angle-down"></span>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                        <li><a href="javascript:;"> Profile</a></li>
+                                        <li>
+                                            <a href="javascript:;">
+                                                <span class="badge bg-red pull-right">50%</span>
+                                                <span>Settings</span>
                                             </a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>*@
+                                        </li>
+                                        <li><a href="javascript:;">Help</a></li>
+                                        <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                                    </ul>
+                                </li>
+
+                                <li role="presentation" class="dropdown">
+                                    <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa fa-envelope-o"></i>
+                                        <span class="badge bg-green">6</span>
+                                    </a>
+                                    <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                                        <li>
+                                            <a>
+                                                <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                                <span>
+                                                    <span>John Smith</span>
+                                                    <span class="time">3 mins ago</span>
+                                                </span>
+                                                <span class="message">
+                                                    Film festivals used to be do-or-die moments for movie makers. They were where...
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a>
+                                                <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                                <span>
+                                                    <span>John Smith</span>
+                                                    <span class="time">3 mins ago</span>
+                                                </span>
+                                                <span class="message">
+                                                    Film festivals used to be do-or-die moments for movie makers. They were where...
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a>
+                                                <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                                <span>
+                                                    <span>John Smith</span>
+                                                    <span class="time">3 mins ago</span>
+                                                </span>
+                                                <span class="message">
+                                                    Film festivals used to be do-or-die moments for movie makers. They were where...
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a>
+                                                <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                                <span>
+                                                    <span>John Smith</span>
+                                                    <span class="time">3 mins ago</span>
+                                                </span>
+                                                <span class="message">
+                                                    Film festivals used to be do-or-die moments for movie makers. They were where...
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <div class="text-center">
+                                                <a>
+                                                    <strong>See All Alerts</strong>
+                                                    <i class="fa fa-angle-right"></i>
+                                                </a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>*@
                     </nav>
                 </div>
             </div>
@@ -271,8 +272,16 @@
     <script src="~/admin/build/js/custom.min.js"></script>
 
     <!-- Flot -->
+
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
     <script>
-    $(document).ready(function () {
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
             var data1 = [
                 [gd(2012, 1, 1), 17],
                 [gd(2012, 1, 2), 74],
@@ -346,7 +355,7 @@
     <!-- /Flot -->
     <!-- JQVMap -->
     <script>
-    $(document).ready(function () {
+        $(document).ready(function () {
             $('#world-map-gdp').vectorMap({
                 map: 'world_en',
                 backgroundColor: null,
@@ -363,7 +372,7 @@
     <!-- /JQVMap -->
     <!-- Skycons -->
     <script>
-    $(document).ready(function () {
+        $(document).ready(function () {
             var icons = new Skycons({
                 "color": "#73879C"
             }),
@@ -382,7 +391,7 @@
     <!-- /Skycons -->
     <!-- Doughnut Chart -->
     <script>
-    $(document).ready(function () {
+        $(document).ready(function () {
             var options = {
                 legend: false,
                 responsive: false
@@ -423,7 +432,7 @@
     <!-- /Doughnut Chart -->
     <!-- bootstrap-daterangepicker -->
     <script>
-    $(document).ready(function () {
+        $(document).ready(function () {
 
             var cb = function (start, end, label) {
                 console.log(start.toISOString(), end.toISOString(), label);
@@ -495,7 +504,7 @@
     <!-- /bootstrap-daterangepicker -->
     <!-- gauge.js -->
     <script>
-    var opts = {
+        var opts = {
             lines: 12,
             angle: 0,
             lineWidth: 0.4,
