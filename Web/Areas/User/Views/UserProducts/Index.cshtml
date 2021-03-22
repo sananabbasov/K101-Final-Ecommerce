@@ -27,60 +27,48 @@
                     <p>
                         <a asp-action="Create"><i class="bi bi-plus-circle-dotted"></i> Əlavə Et</a>
                     </p>
- 
 
-                        <table class="table table-hover">
-                            <thead>
+
+                    <table id="example" class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Məhsul adı</th>
+                                <th>Qiyməti</th>
+                                <th>Baxış</th>
+                                <th>İdentifikasiya</th>
+                                <th>User id</th>
+                                <th>Tənzimləmə</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                string yoxla = @ViewBag.userId;
+                            }
+                            @foreach (var produc in Model.Where(x => x.Seller == yoxla))
+                            {
                                 <tr>
-                                    <th>
-                                        <i class="bi bi-graph-up"></i> @Html.DisplayNameFor(model => model.Hit)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.ProductName)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Publishing)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Author)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Price)
-                                    </th>
-                                    <th></th>
+                                    <td>@produc.ProductName</td>
+                                    <td>@produc.Price</td>
+                                    <td>@produc.Hit</td>
+                                    <td>@produc.ID</td>
+                                    <td>
+                                        @produc.Seller
+                                    </td>
+                                    <td><a asp-controller="userproducts" asp-action="edit" asp-route-id="@produc.ID"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Düzəliş et</a></td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @{ 
-                                    string yoxla = @ViewBag.userId;
-                                }
-                                @foreach (var item in Model.Where(x=> x.Seller == yoxla))
-                                {
-                                  
-                                    <tr>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Category.ID)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.ProductName)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Publishing)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Author)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Price)
-                                        </td>
-                                        <td>
-                                            <a asp-action="Delete" asp-route-id="@item.ID"><i class="bi bi-trash"></i></a>
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Məhsul adı</th>
+                                <th>Qiyməti</th>
+                                <th>Baxış</th>
+                                <th>İdentifikasiya</th>
+                                <th>Status</th>
+                                <th>Tənzimləmə</th>
+                            </tr>
+                        </tfoot>
+                    </table>
                 </div>
             </div>
             <div class="col-lg-2 col-md-12 col-sm-12 col-12 mt-3">

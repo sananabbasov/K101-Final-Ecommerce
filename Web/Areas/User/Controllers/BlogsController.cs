@@ -10,6 +10,7 @@ using Entities;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 
 namespace Web.Areas.User.Controllers
 {
@@ -18,15 +19,19 @@ namespace Web.Areas.User.Controllers
     {
         private readonly EcommerceContext _context;
         private readonly IWebHostEnvironment _appEnvironment;
-        public BlogsController(EcommerceContext context, IWebHostEnvironment appEnvironment)
+        private readonly UserManager<K101User> _userManager;
+
+        public BlogsController(EcommerceContext context, IWebHostEnvironment appEnvironment, UserManager<K101User> userManager)
         {
             _context = context;
             _appEnvironment = appEnvironment;
+            _userManager = userManager;
         }
 
         // GET: User/Blogs
         public async Task<IActionResult> Index()
         {
+            ViewBag.userId = _userManager.GetUserId(HttpContext.User);
             return View(await _context.Blogs.ToListAsync());
         }
 
@@ -68,6 +73,8 @@ namespace Web.Areas.User.Controllers
                 {
                     await PhotoUrl.CopyToAsync(fileStream);
                 }
+                blog.UserID = _userManager.GetUserId(HttpContext.User);
+                blog.UserName = _userManager.GetUserName(HttpContext.User);
                 blog.PhotoUrl = path;
                 _context.Add(blog);
                 await _context.SaveChangesAsync();
@@ -103,11 +110,12 @@ namespace Web.Areas.User.Controllers
             {
                 return NotFound();
             }
-
+            
             if (ModelState.IsValid)
             {
+                
                 try
-                {
+                {            
                     _context.Update(blog);
                     await _context.SaveChangesAsync();
                 }

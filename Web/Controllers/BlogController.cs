@@ -45,6 +45,21 @@ namespace Web.Controllers
             string key = Convert.ToString(id);
             string value = "K101";
 
+
+            var cookieValue = Request.Cookies[key];
+
+            if (cookieValue == null)
+            {
+                CookieOptions cookieOptions = new CookieOptions();
+                cookieOptions.Expires = DateTime.Now.AddDays(1);
+                Response.Cookies.Append(key, value, cookieOptions);
+            
+                    vm.Blog.Hit += 1;
+                
+            }
+
+
+            _context.Update(vm.Blog);
             await _context.SaveChangesAsync();
             return View(vm);
         }

@@ -57,36 +57,49 @@
 <table id="example" class="table table-striped table-bordered">
     <thead>
         <tr>
-            <th>Məhsul adı</th>
-            <th>Qiyməti</th>
+            <th>Məqalə</th>
+            <th>Yazıçı</th>
             <th>Baxış</th>
-            <th>İdentifikasiya</th>
-            <th>User id</th>
+            <th>Status</th>
+            <th>Tarix</th>
             <th>Tənzimləmə</th>
         </tr>
     </thead>
     <tbody>
-       @foreach (var produc in Model.Products)
+       @foreach (var blog in Model.Blogs)
        {
         <tr>
-            <td>@produc.ProductName</td>
-            <td>@produc.Price</td>
-            <td>@produc.Hit</td>
-            <td>@produc.ID</td>
+            <td>@blog.PostName</td>
+            <td>@blog.UserName</td>
+            <td>@blog.Hit</td>
             <td>
-                @produc.Seller
+                @if (blog.IsDeleted == true)
+                {
+                    <span class="label label-danger">Geri çevrilib</span>
+                }
+                else if (blog.IsActive == true)
+                {
+                    <span class="label label-success">Təsdiqlənib</span>
+                }
+                else
+                {
+                    <span class="label label-warning">Gözləmədə</span>
+                }
             </td>
-            <td><a href="admindashboard/products/delete/@produc.ID"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sil</a></td>
+            <td>
+                @blog.PostDate
+            </td>
+            <td><a href="admindashboard/blogs/edit/@blog.ID"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Düzəliş et</a></td>
         </tr>
        }
     </tbody>
     <tfoot>
         <tr>
-            <th>Məhsul adı</th>
-            <th>Qiyməti</th>
+            <th>Məqalə</th>
+            <th>Yazıçı</th>
             <th>Baxış</th>
-            <th>İdentifikasiya</th>
             <th>Status</th>
+            <th>Tarix</th>
             <th>Tənzimləmə</th>
         </tr>
     </tfoot>

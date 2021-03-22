@@ -21,7 +21,7 @@ namespace Services
 
             return products;
         }
-        public Blog GetBlogByID(int id)
+        public Blog GetBlogByID(int? id)
         {
             return _context.Blogs.Find(id);
         }

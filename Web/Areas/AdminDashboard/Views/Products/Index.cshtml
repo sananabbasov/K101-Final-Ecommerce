@@ -2,7 +2,6 @@
 
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Areas/User/Views/_ViewStart.cshtml";
 }
 
 <h2>Index</h2>
@@ -10,153 +9,55 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table id="example" class="table table-striped table-bordered">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Seller)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Number)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Publishing)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Author)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhotoURL)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Pages)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Discount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cost)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.isFeatured)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ThumbnailPictureID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SKU)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tags)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Barcode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Supplier)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Hit)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsActive)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsDeleted)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ModifiedOn)
-            </th>
-            <th></th>
+            <th>Məhsul adı</th>
+            <th>Qiyməti</th>
+            <th>Baxış</th>
+            <th>İdentifikasiya</th>
+            <th>User id</th>
+            <th>Tənzimləmə</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var produc in Model)
+        {
         <tr>
+            <td>@produc.ProductName</td>
+            <td>@produc.Price</td>
+            <td>@produc.Hit</td>
             <td>
-                @Html.DisplayFor(modelItem => item.Category.ID)
+                @produc.Seller
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
+                @if (produc.IsDeleted == true)
+                {
+                    <span class="label label-danger">Geri çevrilib</span>
+                }
+                else if (produc.IsActive == true)
+                {
+                    <span class="label label-success">Təsdiqlənib</span>
+                }
+                else
+                {
+                    <span class="label label-warning">Gözləmədə</span>
+                }
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Seller)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Number)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Publishing)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhotoURL)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Pages)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Discount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cost)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.isFeatured)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ThumbnailPictureID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SKU)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tags)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Barcode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Supplier)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Hit)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsDeleted)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModifiedOn)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
+
+            <td><a asp-controller="products" asp-action="edit" asp-route-id="@produc.ID"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Düzəliş et</a></td>
         </tr>
-}
+        }
     </tbody>
+    <tfoot>
+        <tr>
+            <th>Məhsul adı</th>
+            <th>Qiyməti</th>
+            <th>Baxış</th>
+            <th>İdentifikasiya</th>
+            <th>Status</th>
+            <th>Tənzimləmə</th>
+        </tr>
+    </tfoot>
 </table>
+

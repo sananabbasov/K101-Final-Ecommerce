@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DataAccess;
 using Entities;
+using Web.Models;
+using Services;
 
 namespace Web.Areas.AdminDashboard.Controllers
 {
@@ -14,9 +16,11 @@ namespace Web.Areas.AdminDashboard.Controllers
     public class BlogsController : Controller
     {
         private readonly EcommerceContext _context;
+        private BlogService _blogService;
 
         public BlogsController(EcommerceContext context)
         {
+            _blogService = new BlogService(context);
             _context = context;
         }
 
@@ -87,34 +91,19 @@ namespace Web.Areas.AdminDashboard.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PostName,PostUrl,PhotoUrl,Hit,UserID,UserName,PostDate,MyProperty,Description,ID,IsActive,IsDeleted,ModifiedOn")] Blog blog)
+        public async Task<IActionResult> Edit(int? id, bool IsActive)
         {
-            if (id != blog.ID)
-            {
-                return NotFound();
-            }
+            if (id == null) return View("Error");
+            BlogViewModel vm = new BlogViewModel();
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(blog);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!BlogExists(blog.ID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(blog);
+            vm.Blog = _blogService.GetBlogByID(id.Value);
+
+            vm.Blog.IsActive = IsActive;
+
+
+            _context.Update(vm.Blog);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("index","home");
         }
 
         // GET: AdminDashboard/Blogs/Delete/5

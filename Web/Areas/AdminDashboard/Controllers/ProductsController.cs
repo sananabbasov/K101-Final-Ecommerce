@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DataAccess;
 using Entities;
+using Web.Models;
+using Services;
 
 namespace Web.Areas.AdminDashboard.Controllers
 {
@@ -14,9 +16,11 @@ namespace Web.Areas.AdminDashboard.Controllers
     public class ProductsController : Controller
     {
         private readonly EcommerceContext _context;
+        private ProductService _productService;
 
         public ProductsController(EcommerceContext context)
         {
+            _productService = new ProductService(context);
             _context = context;
         }
 
@@ -92,35 +96,21 @@ namespace Web.Areas.AdminDashboard.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CategoryID,ProductName,Description,Seller,Number,Publishing,Author,PhotoURL,Pages,Price,Discount,Cost,isFeatured,ThumbnailPictureID,SKU,Tags,Barcode,Supplier,Hit,ID,IsActive,IsDeleted,ModifiedOn")] Product product)
+        public async Task<IActionResult> Edit(int? id, bool IsDeleted, bool IsActive)
         {
-            if (id != product.ID)
-            {
-                return NotFound();
-            }
+            if (id == null) return View("Error");
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(product);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ProductExists(product.ID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["CategoryID"] = new SelectList(_context.Categories, "ID", "ID", product.CategoryID);
-            return View(product);
+            ProductViewModel product = new ProductViewModel();
+
+            product.Product = _productService.GetProductByID(id.Value);
+
+
+            product.Product.IsDeleted = IsDeleted;
+            product.Product.IsActive = IsActive;
+
+            _context.Update(product.Product);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("index", "products");
         }
 
         // GET: AdminDashboard/Products/Delete/5
