@@ -3,14 +3,12 @@
 @{
     ViewData["Title"] = "Edit";
 }
+<script src="https://cdn.ckeditor.com/4.16.0/basic/ckeditor.js"></script>
 
-<h2>Edit</h2>
 
-<h4>Blog</h4>
-<hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" enctype="multipart/form-data" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="PostName" class="control-label"></label>
@@ -18,47 +16,30 @@
                 <span asp-validation-for="PostName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PostUrl" class="control-label"></label>
-                <input asp-for="PostUrl" class="form-control" />
-                <span asp-validation-for="PostUrl" class="text-danger"></span>
+                <label asp-for="Description" class="control-label"></label>
+                @*<input asp-for="Description" class="form-control" />*@
+                <textarea class="form-control" asp-for="Description" cols="80" id="editor2" rows="10" data-sample-short></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+                <script>
+                    CKEDITOR.replace('editor2', {
+                        height: 260,
+                        /* Default CKEditor 4 styles are included as well to avoid copying default styles. */
+                        contentsCss: [
+                            'http://cdn.ckeditor.com/4.16.0/full-all/contents.css',
+                            'https://ckeditor.com/docs/ckeditor4/4.16.0/examples/assets/css/classic.css'
+                        ]
+                    });
+                </script>
             </div>
             <div class="form-group">
                 <label asp-for="PhotoUrl" class="control-label"></label>
-                <input asp-for="PhotoUrl" class="form-control" />
+                <input name="PhotoUrl" class="form-control" type="file" />
                 <span asp-validation-for="PhotoUrl" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Hit" class="control-label"></label>
-                <input asp-for="Hit" class="form-control" />
-                <span asp-validation-for="Hit" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UserID" class="control-label"></label>
-                <input asp-for="UserID" class="form-control" />
-                <span asp-validation-for="UserID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UserName" class="control-label"></label>
-                <input asp-for="UserName" class="form-control" />
-                <span asp-validation-for="UserName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PostDate" class="control-label"></label>
-                <input asp-for="PostDate" class="form-control" />
-                <span asp-validation-for="PostDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MyProperty" class="control-label"></label>
-                <input asp-for="MyProperty" class="form-control" />
-                <span asp-validation-for="MyProperty" class="text-danger"></span>
-            </div>
-            <input type="hidden" asp-for="ID" />
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
-                    </label>
-                </div>
+                <img class="img-responsive col-md-4" src="/uploads/@Model.PhotoUrl" alt="Alternate Text" />
+                <input name="EditPhoto" value="@Model.PhotoUrl" class="form-control" type="hidden" />
+                <span asp-validation-for="PhotoUrl" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <div class="checkbox">
@@ -68,18 +49,9 @@
                 </div>
             </div>
             <div class="form-group">
-                <label asp-for="ModifiedOn" class="control-label"></label>
-                <input asp-for="ModifiedOn" class="form-control" />
-                <span asp-validation-for="ModifiedOn" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Yadda saxla" class="btn btn-default" />
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 

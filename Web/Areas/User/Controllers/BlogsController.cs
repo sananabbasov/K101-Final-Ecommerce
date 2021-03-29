@@ -68,7 +68,7 @@ namespace Web.Areas.User.Controllers
         {
             if (ModelState.IsValid)
             {
-                string path = "/Uploads/" + PhotoUrl.FileName;
+                string path = "/Uploads/" + Guid.NewGuid() + PhotoUrl.FileName;
                 using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
                 {
                     await PhotoUrl.CopyToAsync(fileStream);
@@ -104,16 +104,34 @@ namespace Web.Areas.User.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PostName,PostUrl,PhotoUrl,Hit,UserID,UserName,PostDate,MyProperty,ID,IsActive,IsDeleted,ModifiedOn")] Blog blog)
+        public async Task<IActionResult> Edit(int id, [Bind("PostName,PostUrl,PhotoUrl,Hit,UserID,UserName,PostDate,MyProperty,ID,IsActive,IsDeleted,ModifiedOn,Description")] Blog blog, IFormFile PhotoUrl, string EditPhoto)
         {
+            string userId = _userManager.GetUserId(HttpContext.User);
+            string userName = _userManager.GetUserName(HttpContext.User);
+
             if (id != blog.ID)
             {
                 return NotFound();
             }
-            
+            if (PhotoUrl == null)
+            {
+                blog.PhotoUrl = EditPhoto;
+                
+            }
+            else
+            {
+                string path = "/Uploads/" + Guid.NewGuid() + PhotoUrl.FileName;
+                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                {
+                    Path.Combine(Directory.GetCurrentDirectory(), "Uploads", path);
+                    await PhotoUrl.CopyToAsync(fileStream);
+                }
+                blog.PhotoUrl = path.Remove(0, 8);
+            }
             if (ModelState.IsValid)
             {
-                
+                blog.UserID = userId;
+                blog.UserName = userName;
                 try
                 {            
                     _context.Update(blog);

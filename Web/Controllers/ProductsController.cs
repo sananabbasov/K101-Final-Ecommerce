@@ -63,6 +63,8 @@ namespace Web.Controllers
             };
             return PartialView("ProductPartial",vm);
         }
+
+
         public async Task<IActionResult> Detail(int? id)
         {
             

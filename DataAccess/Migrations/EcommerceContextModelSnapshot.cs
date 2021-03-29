@@ -310,8 +310,9 @@ namespace DataAccess.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Number")
-                        .HasColumnType("int");
+                    b.Property<string>("Number")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Pages")
                         .HasColumnType("int");
@@ -323,7 +324,9 @@ namespace DataAccess.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("ProductName")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<string>("Publishing")
                         .HasColumnType("nvarchar(max)");

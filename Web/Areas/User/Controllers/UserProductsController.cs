@@ -9,6 +9,9 @@ using DataAccess;
 using Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace Web.Areas.User.Controllers
 {
@@ -18,11 +21,14 @@ namespace Web.Areas.User.Controllers
     {
         private readonly EcommerceContext _context;
         private readonly UserManager<K101User> _userManager;
+        private readonly IWebHostEnvironment _appEnvironment;
 
-        public UserProductsController(EcommerceContext context, UserManager<K101User> userManager)
+
+        public UserProductsController(EcommerceContext context, UserManager<K101User> userManager, IWebHostEnvironment appEnvironment)
         {
             _context = context;
             _userManager = userManager;
+            _appEnvironment = appEnvironment;
         }
 
         // GET: User/UserProducts
@@ -79,6 +85,8 @@ namespace Web.Areas.User.Controllers
 
             if (ModelState.IsValid)
             {
+                product.Supplier = _userManager.GetUserName(HttpContext.User);
+                product.Seller = userId;
                 _context.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -109,15 +117,35 @@ namespace Web.Areas.User.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CategoryID,ProductName,Description,Seller,Number,Publishing,Author,Pages,Price,Discount,Cost,isFeatured,ThumbnailPictureID,SKU,Tags,Barcode,Supplier,ID,IsActive,IsDeleted,ModifiedOn")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("CategoryID,ProductName,Description,Seller,Number,Publishing,Author,Pages,Price,Discount,Cost,isFeatured,ThumbnailPictureID,SKU,Tags,Barcode,Supplier,ID,IsActive,IsDeleted,ModifiedOn")] Product product, IFormFile Tags, string EditPhoto)
         {
+            string userId = _userManager.GetUserId(HttpContext.User);
             if (id != product.ID)
             {
                 return NotFound();
             }
 
+            if (Tags == null)
+            {
+                product.Tags = EditPhoto;
+            }
+            else
+            {
+                string path = "/Uploads/" + Guid.NewGuid() + Tags.FileName;
+                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                {
+                    Path.Combine(Directory.GetCurrentDirectory(), "Uploads", path);
+                    await Tags.CopyToAsync(fileStream);
+                }
+                product.Tags = path.Remove(0, 8);
+            }
+
             if (ModelState.IsValid)
             {
+                
+                
+                product.Seller = userId;
+                
                 try
                 {
                     _context.Update(product);

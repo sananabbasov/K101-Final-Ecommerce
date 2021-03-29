@@ -65,6 +65,7 @@ namespace Web.Areas.AdminDashboard.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(category);
+                category.IsActive = true;
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -74,59 +75,59 @@ namespace Web.Areas.AdminDashboard.Controllers
         }
 
         // GET: AdminDashboard/Categories/Edit/5
-        //public async Task<IActionResult> Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        //    var category = await _context.Categories.FindAsync(id);
-        //    if (category == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    ViewData["ParentCategoryID"] = new SelectList(_context.Categories, "ID", "ID", category.ParentCategoryID);
-        //    ViewData["PictureID"] = new SelectList(_context.Pictures, "ID", "ID", category.PictureID);
-        //    return View(category);
-        //}
+            var category = await _context.Categories.FindAsync(id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            ViewData["ParentCategoryID"] = new SelectList(_context.Categories, "ID", "Name", category.ParentCategoryID);
+            ViewData["PictureID"] = new SelectList(_context.Pictures, "ID", "ID", category.PictureID);
+            return View(category);
+        }
 
-        // POST: AdminDashboard/Categories/Edit/5
+        //POST: AdminDashboard/Categories/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Edit(int id, [Bind("ParentCategoryID,Name,Description,PictureID,isFeatured,ID,IsActive,IsDeleted,ModifiedOn")] Category category)
-        //{
-        //    if (id != category.ID)
-        //    {
-        //        return NotFound();
-        //    }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("ParentCategoryID,Name,Description,PictureID,isFeatured,ID,IsActive,IsDeleted,ModifiedOn")] Category category)
+        {
+            if (id != category.ID)
+            {
+                return NotFound();
+            }
 
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            _context.Update(category);
-        //            await _context.SaveChangesAsync();
-        //        }
-        //        catch (DbUpdateConcurrencyException)
-        //        {
-        //            if (!CategoryExists(category.ID))
-        //            {
-        //                return NotFound();
-        //            }
-        //            else
-        //            {
-        //                throw;
-        //            }
-        //        }
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    ViewData["ParentCategoryID"] = new SelectList(_context.Categories, "ID", "ID", category.ParentCategoryID);
-        //    ViewData["PictureID"] = new SelectList(_context.Pictures, "ID", "ID", category.PictureID);
-        //    return View(category);
-        //}
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(category);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!CategoryExists(category.ID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["ParentCategoryID"] = new SelectList(_context.Categories, "ID", "ID", category.ParentCategoryID);
+            ViewData["PictureID"] = new SelectList(_context.Pictures, "ID", "ID", category.PictureID);
+            return View(category);
+        }
 
         // GET: AdminDashboard/Categories/Delete/5
         public async Task<IActionResult> Delete(int? id)
@@ -154,7 +155,8 @@ namespace Web.Areas.AdminDashboard.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var category = await _context.Categories.FindAsync(id);
-            _context.Categories.Remove(category);
+            category.IsActive = false;
+            _context.Categories.Update(category);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

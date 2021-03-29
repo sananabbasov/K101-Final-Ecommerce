@@ -9,7 +9,9 @@ namespace Entities
     {
         [Key]
         public int ID { get; set; }
+        [Display(Name = "Aktivləşdir")]
         public bool IsActive { get; set; }
+        [Display(Name = "Sil")]
         public bool IsDeleted { get; set; }
         public DateTime? ModifiedOn { get; set; }
     }

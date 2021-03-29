@@ -434,6 +434,82 @@ $yellow: #e1b12c;
 }
 
 
+#loginPage{
+    background: url("../img/login.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    z-index: 0;
+    a{
+        color: #fff;
+        text-decoration: none;
+    }
+    .loginDesing{
+        height: 100vh;
+        z-index: 5;
+        background-color: #7180938f;
+        color: #fff;
+        .login{
+            background-color: #e1b12cc4;
+            padding: 50px;
+            z-index: 5;
+            border-radius: 10px;
+            .emoji{
+                
+                .far{
+                    font-size: 50px;
+                    background: #fff;
+                    padding: 15px;
+                    border-radius: 100%;
+                    &.fa-smile{
+                        transform: rotate(-180deg);
+                        color: $yellow;
+                    }
+                }
+            }
+            button{
+                background: $mainColor;
+            }
+        }
+    }
+}
+
+#bookDetail{
+    .card-title{
+        color: $mainColor;
+    }
+    p{
+        color: $mainColor;
+    }
+    a{
+        text-decoration: none;
+        color: #fff;
+        &.callSeller{
+            background-color: $yellow;
+            padding: 10px;
+        }
+    }
+    .list-group{
+        color: $mainColor;
+        b{
+            color: $mainColor;
+        }
+    }
+    
+}
+
+
+#profileSection{
+    .card-title{
+        color: $mainColor;
+    }
+    .badge{
+        &.bg-primary{
+            background-color: $yellow!important;
+        }
+    }
+}
 
 /* @media */
 @media only screen and (max-width: 600px) {

@@ -229,4 +229,5 @@ C:\Users\veter\Desktop\K101Final\Web\obj\Debug\net5.0\Razor\Areas\AdminDashboard
 C:\Users\veter\Desktop\K101Final\Web\obj\Debug\net5.0\Razor\Areas\AdminDashboard\Views\Products\Details.cshtml.g.cs
 C:\Users\veter\Desktop\K101Final\Web\obj\Debug\net5.0\Razor\Areas\AdminDashboard\Views\Products\Edit.cshtml.g.cs
 C:\Users\veter\Desktop\K101Final\Web\obj\Debug\net5.0\Razor\Areas\AdminDashboard\Views\Products\Index.cshtml.g.cs
+C:\Users\veter\Desktop\K101Final\Web\obj\Debug\net5.0\Razor\Areas\AdminDashboard\Views\Categories\Edit.cshtml.g.cs
 C:\Users\veter\Desktop\K101Final\Web\obj\Debug\net5.0\Razor\Areas\User\Views\UserProducts\Edit.cshtml.g.cs

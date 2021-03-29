@@ -1,101 +1,110 @@
 ﻿@model Entities.Product
+    <script src="https://cdn.ckeditor.com/4.16.0/basic/ckeditor.js"></script>
 
-@{
-    ViewData["Title"] = "Edit";
-}
+    <h4>Product</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit" enctype="multipart/form-data" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                @if (Model.IsDeleted != true)
+                {
 
-<h2>Edit</h2>
+                    @if (Model.IsActive != true)
+                    {
+                        <div class="form-group">
+                            <label asp-for="CategoryID" class="control-label"></label>
+                            <select asp-for="CategoryID" class="form-control" asp-items="ViewBag.CategoryID"></select>
+                            <span asp-validation-for="CategoryID" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ProductName" class="control-label"></label>
+                            <input asp-for="ProductName" class="form-control" />
+                            <span asp-validation-for="ProductName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Description" class="control-label"></label>
+                            @*<input asp-for="Description" class="form-control" />*@
+                            <textarea class="form-control" asp-for="Description" cols="80" id="editor2" rows="10" data-sample-short></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                            <script>
+                                CKEDITOR.replace('editor2', {
+                                    height: 260,
+                                    /* Default CKEditor 4 styles are included as well to avoid copying default styles. */
+                                    contentsCss: [
+                                        'http://cdn.ckeditor.com/4.16.0/full-all/contents.css',
+                                        'https://ckeditor.com/docs/ckeditor4/4.16.0/examples/assets/css/classic.css'
+                                    ]
+                                });
+                            </script>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Number" class="control-label"></label>
+                            <input type="text" asp-for="Number" class="form-control" />
+                            <span asp-validation-for="Number" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Publishing" class="control-label"></label>
+                            <input asp-for="Publishing" class="form-control" />
+                            <span asp-validation-for="Publishing" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Author" class="control-label"></label>
+                            <input asp-for="Author" class="form-control" />
+                            <span asp-validation-for="Author" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Pages" class="control-label"></label>
+                            <input asp-for="Pages" class="form-control" />
+                            <span asp-validation-for="Pages" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Price" class="control-label"></label>
+                            <input asp-for="Price" class="form-control" />
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Tags" class="control-label"></label>
+                            <input name="Tags" class="form-control" type="file" />
+                            <span asp-validation-for="Tags" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <img class="img-responsive col-md-4" src="/uploads/@Model.Tags" alt="Alternate Text" />
+                            <input name="EditPhoto" value="@Model.Tags" class="form-control" type="hidden" />
+                            <span asp-validation-for="Tags" class="text-danger"></span>
+                        </div>
+                        <input type="hidden" asp-for="ID" />
 
-<h4>Product</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="CategoryID" class="control-label"></label>
-                <input asp-for="CategoryID" class="form-control" readonly />
-                <span asp-validation-for="CategoryID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ProductName" class="control-label"></label>
-                <input asp-for="ProductName" class="form-control" readonly />
-                <span asp-validation-for="ProductName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Number" class="control-label"></label>
-                <input asp-for="Number" class="form-control" readonly />
-                <span asp-validation-for="Number" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Publishing" class="control-label"></label>
-                <input asp-for="Publishing" class="form-control" readonly />
-                <span asp-validation-for="Publishing" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Author" class="control-label"></label>
-                <input asp-for="Author" class="form-control" readonly />
-                <span asp-validation-for="Author" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PhotoURL" class="control-label"></label>
-                <img class="col-xs-push-6 img-responsive" src="~/Uploads/@Model.Tags" alt="@Model.ProductName" />
-                <span asp-validation-for="PhotoURL" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Pages" class="control-label"></label>
-                <input asp-for="Pages" class="form-control" readonly />
-                <span asp-validation-for="Pages" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" readonly />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="isFeatured" /> @Html.DisplayNameFor(model => model.isFeatured)
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label asp-for="Supplier" class="control-label"></label>
-                <input asp-for="Supplier" class="form-control" readonly />
-                <span asp-validation-for="Supplier" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Hit" class="control-label"></label>
-                <input asp-for="Hit" class="form-control" readonly />
-                <span asp-validation-for="Hit" class="text-danger"></span>
-            </div>
-            <input type="hidden" asp-for="ID" />
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="IsDeleted" /> @Html.DisplayNameFor(model => model.IsDeleted)
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Yadda saxla" class="btn btn-default" />
-            </div>
-        </form>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input asp-for="IsDeleted" /> @Html.DisplayNameFor(model => model.IsDeleted)
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" value="Yadda saxla" class="btn btn-default" />
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-warning" role="alert">
+                            Məhsul təsdiqləndiyi üçün dəyişdirilə bilməz.
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="alert alert-danger" role="alert">
+                        Məhsul silinib.
+                    </div>
+                }
+            </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div>
+        <a asp-action="Index">Məhsullara qayıt</a>
+    </div>
 

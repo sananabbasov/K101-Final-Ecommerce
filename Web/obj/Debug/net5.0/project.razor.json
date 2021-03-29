@@ -15603,6 +15603,11 @@
   "RootNamespace": "Web",
   "Documents": [
     {
+      "FilePath": "c:\\Users\\veter\\Desktop\\K101Final\\Web\\Areas\\AdminDashboard\\Views\\Products\\Details.cshtml",
+      "TargetPath": "Areas\\AdminDashboard\\Views\\Products\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\veter\\Desktop\\K101Final\\Web\\Areas\\User\\Views\\_ViewImports.cshtml",
       "TargetPath": "Areas\\User\\Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
@@ -15618,6 +15623,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\veter\\Desktop\\K101Final\\Web\\Areas\\User\\Views\\UserProducts\\Edit.cshtml",
+      "TargetPath": "Areas\\User\\Views\\UserProducts\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\veter\\Desktop\\K101Final\\Web\\Areas\\User\\Views\\Home\\Index.cshtml",
       "TargetPath": "Areas\\User\\Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
@@ -15628,8 +15638,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\veter\\Desktop\\K101Final\\Web\\Areas\\AdminDashboard\\Views\\Products\\Create.cshtml",
+      "TargetPath": "Areas\\AdminDashboard\\Views\\Products\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\veter\\Desktop\\K101Final\\Web\\Areas\\AdminDashboard\\Views\\_ViewImports.cshtml",
       "TargetPath": "Areas\\AdminDashboard\\Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\veter\\Desktop\\K101Final\\Web\\Areas\\AdminDashboard\\Views\\Blogs\\Index.cshtml",
+      "TargetPath": "Areas\\AdminDashboard\\Views\\Blogs\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15653,6 +15673,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\veter\\Desktop\\K101Final\\Web\\Areas\\AdminDashboard\\Views\\Blogs\\Delete.cshtml",
+      "TargetPath": "Areas\\AdminDashboard\\Views\\Blogs\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\veter\\Desktop\\K101Final\\Web\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
@@ -15663,8 +15688,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\veter\\Desktop\\K101Final\\Web\\Areas\\User\\Views\\Blogs\\Details.cshtml",
+      "TargetPath": "Areas\\User\\Views\\Blogs\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\veter\\Desktop\\K101Final\\Web\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\veter\\Desktop\\K101Final\\Web\\Areas\\User\\Views\\Blogs\\Delete.cshtml",
+      "TargetPath": "Areas\\User\\Views\\Blogs\\Delete.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15683,8 +15718,23 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\veter\\Desktop\\K101Final\\Web\\Areas\\AdminDashboard\\Views\\Products\\Delete.cshtml",
+      "TargetPath": "Areas\\AdminDashboard\\Views\\Products\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\veter\\Desktop\\K101Final\\Web\\Views\\Blog\\Detail.cshtml",
+      "TargetPath": "Views\\Blog\\Detail.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\veter\\Desktop\\K101Final\\Web\\Areas\\AdminDashboard\\Views\\AdminUser\\Index.cshtml",
       "TargetPath": "Areas\\AdminDashboard\\Views\\AdminUser\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\veter\\Desktop\\K101Final\\Web\\Areas\\User\\Views\\Blogs\\Create.cshtml",
+      "TargetPath": "Areas\\User\\Views\\Blogs\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15700,6 +15750,11 @@
     {
       "FilePath": "c:\\Users\\veter\\Desktop\\K101Final\\Web\\Views\\Products\\ProductPartial.cshtml",
       "TargetPath": "Views\\Products\\ProductPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\veter\\Desktop\\K101Final\\Web\\Areas\\AdminDashboard\\Views\\Blogs\\Create.cshtml",
+      "TargetPath": "Areas\\AdminDashboard\\Views\\Blogs\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15723,13 +15778,33 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\veter\\Desktop\\K101Final\\Web\\Areas\\User\\Views\\Blogs\\Edit.cshtml",
+      "TargetPath": "Areas\\User\\Views\\Blogs\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\veter\\Desktop\\K101Final\\Web\\Areas\\AdminDashboard\\Views\\Advertisements\\Edit.cshtml",
       "TargetPath": "Areas\\AdminDashboard\\Views\\Advertisements\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\veter\\Desktop\\K101Final\\Web\\Areas\\AdminDashboard\\Views\\Blogs\\Edit.cshtml",
+      "TargetPath": "Areas\\AdminDashboard\\Views\\Blogs\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\veter\\Desktop\\K101Final\\Web\\Areas\\AdminDashboard\\Views\\Shared\\_LayoutAdmin.cshtml",
       "TargetPath": "Areas\\AdminDashboard\\Views\\Shared\\_LayoutAdmin.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\veter\\Desktop\\K101Final\\Web\\Areas\\AdminDashboard\\Views\\Blogs\\Details.cshtml",
+      "TargetPath": "Areas\\AdminDashboard\\Views\\Blogs\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\veter\\Desktop\\K101Final\\Web\\Areas\\AdminDashboard\\Views\\Categories\\Edit.cshtml",
+      "TargetPath": "Areas\\AdminDashboard\\Views\\Categories\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15758,13 +15833,33 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\veter\\Desktop\\K101Final\\Web\\Areas\\AdminDashboard\\Views\\Products\\Edit.cshtml",
+      "TargetPath": "Areas\\AdminDashboard\\Views\\Products\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\veter\\Desktop\\K101Final\\Web\\Areas\\AdminDashboard\\Views\\Products\\Index.cshtml",
+      "TargetPath": "Areas\\AdminDashboard\\Views\\Products\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\veter\\Desktop\\K101Final\\Web\\Areas\\User\\Views\\UserProducts\\Index.cshtml",
       "TargetPath": "Areas\\User\\Views\\UserProducts\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\veter\\Desktop\\K101Final\\Web\\Areas\\User\\Views\\Blogs\\Index.cshtml",
+      "TargetPath": "Areas\\User\\Views\\Blogs\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\veter\\Desktop\\K101Final\\Web\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\veter\\Desktop\\K101Final\\Web\\Views\\Blog\\Index.cshtml",
+      "TargetPath": "Views\\Blog\\Index.cshtml",
       "FileKind": "mvc"
     },
     {

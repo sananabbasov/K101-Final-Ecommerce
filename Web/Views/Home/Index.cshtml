@@ -20,11 +20,30 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/">Ana səhifə</a>
                     </li>
-                    @foreach (var item in Model.Categories)
+                    @foreach (var menu in Model.Categories.Where(x=>x.IsActive == true))
                     {
-                        <li class="nav-item">
-                            <a class="nav-link" href="/products/index/@item.ID">@item.Name</a>
-                        </li>
+                        @if (menu.ID == menu.ParentCategoryID)
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    @menu.Name
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    @foreach (var subItem in Model.Categories.Where(x => x.ParentCategoryID == menu.ParentCategoryID))
+                                    {
+                                        <li><a class="dropdown-item" href="#">@subItem.Name</a></li>
+
+                                    }
+                                </ul>
+                            </li>
+                        }
+                        else if (menu.ParentCategoryID == null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="/products/index/@menu.ID">@menu.Name</a>
+                            </li>
+                        }
+
                     }
 
 

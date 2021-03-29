@@ -462,6 +462,85 @@ figure .back {
   height: 200px;
 }
 
+#loginPage {
+  background: url("../img/login.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  z-index: 0;
+}
+
+#loginPage a {
+  color: #fff;
+  text-decoration: none;
+}
+
+#loginPage .loginDesing {
+  height: 100vh;
+  z-index: 5;
+  background-color: #7180938f;
+  color: #fff;
+}
+
+#loginPage .loginDesing .login {
+  background-color: #e1b12cc4;
+  padding: 50px;
+  z-index: 5;
+  border-radius: 10px;
+}
+
+#loginPage .loginDesing .login .emoji .far {
+  font-size: 50px;
+  background: #fff;
+  padding: 15px;
+  border-radius: 100%;
+}
+
+#loginPage .loginDesing .login .emoji .far.fa-smile {
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+  color: #e1b12c;
+}
+
+#loginPage .loginDesing .login button {
+  background: #718093;
+}
+
+#bookDetail .card-title {
+  color: #718093;
+}
+
+#bookDetail p {
+  color: #718093;
+}
+
+#bookDetail a {
+  text-decoration: none;
+  color: #fff;
+}
+
+#bookDetail a.callSeller {
+  background-color: #e1b12c;
+  padding: 10px;
+}
+
+#bookDetail .list-group {
+  color: #718093;
+}
+
+#bookDetail .list-group b {
+  color: #718093;
+}
+
+#profileSection .card-title {
+  color: #718093;
+}
+
+#profileSection .badge.bg-primary {
+  background-color: #e1b12c !important;
+}
+
 /* @media */
 @media only screen and (max-width: 600px) {
   .modal-dialog {
